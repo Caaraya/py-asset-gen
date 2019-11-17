@@ -27,8 +27,7 @@ def save_blop(np_size=7, rand_points=7, scale=1, rad=0.2, edgy=0.05, name="blops
   fig, ax = plt.subplots()
   ax.set_aspect("equal")
   data = {}
-  data['ratio'] = nearest_sq(np_size)
-  data['center'] = []
+  data['shape'] = []
 
   for c in get_quadranted_array(np_size):
 
@@ -36,7 +35,7 @@ def save_blop(np_size=7, rand_points=7, scale=1, rad=0.2, edgy=0.05, name="blops
       x,y, _ = get_bezier_curve(a,rad=rad, edgy=edgy)
       x_mid, y_mid = avg(x), avg(y)
       plt.fill(x,y)
-      data['center'].append([x_mid,y_mid])
+      data['shape'].append({'center': [x_mid,y_mid], 'quadrant': c})
       #plt.plot([x_mid], [y_mid], color='k',marker='o',lw=0, linestyle="")
 
   plt.axis('off')
